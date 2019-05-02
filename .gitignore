@@ -1,0 +1,17 @@
+# Common Ignores
+
+# Prerequisites
+*.d
+
+# Visual Stuff
+.vs
+
+# Compiled Object file
+*.ilk
+*.pdb
+
+# Executables
+*.exe
+*.out
+*.app
+
