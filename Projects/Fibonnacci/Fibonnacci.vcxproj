@@ -163,8 +163,8 @@
     <ClInclude Include="include\pch.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Fibonnacci.cpp" />
     <ClCompile Include="src\aaFibonacciSeries.cpp" />
+    <ClCompile Include="src\Fibonnacci.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

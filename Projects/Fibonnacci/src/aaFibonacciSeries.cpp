@@ -1,8 +1,8 @@
 #include "aaFibonacciSeries.h"
 
-
 #include <iostream>
 #include <chrono>
+
 
 using std::cout;
 using std::cin;
@@ -31,31 +31,69 @@ FibonnacciSeries::run()
   cout << "*********************************************************" << endl << endl;
 
   bool execute = true;
+  bool getOtherValue = true;
+
+  std::vector<int> aValues;
 
   do 
   {
-    cout << "Ingresa el número por el cúal deseas saber su valor Fibonacci" << endl << endl;
+    cout << "Ingresa una serie de valores a los que deseas saber su equivalente en Fibonacci." << endl;
+    cout << "Ingresa un valor: "<< endl;
     
     int value;
     cin >> value;
-
+    aValues.push_back(value);
     cout << endl;
 
-    exec(value);
+    while (getOtherValue)
+    {
+      cout << endl << "Valores Registrados: " << endl;
+      for (int value : aValues)
+      {
+        cout << value << endl;
+      }
 
-    cout << endl << "Deseas ingresar otro valor? (y/n)" << endl;
+      cout << endl << "Deseas ingresar otro valor? (y/n)" << endl;
+      
+      char userInput;
+      cin >> userInput;
+      if (userInput == 'y')
+      {
+        cout << endl << "Ingresa un valor: " << endl;
+        int value;
+        cin >> value;
 
+        aValues.push_back(value);
+      }
+      else
+      {
+        getOtherValue = false;
+      }
+    }
+
+    exec(aValues);
+
+    cout << endl << "Deseas realizar otra operación? (y/n)" << endl;
     char userInput;
     cin >> userInput;
-    execute = (userInput == 'y');
+
+    if (userInput == 'y')
+    {
+      execute = true;
+      getOtherValue = true;
+      aValues.clear();
+    }
+    else
+    {
+      execute = false;
+    }
 
     cout << endl;
 
   } while (execute);
 }
 
-void 
-FibonnacciSeries::exec(const int & _value)
+void FibonnacciSeries::exec(const int & _value)
 {
   // varibles
 
@@ -66,7 +104,7 @@ FibonnacciSeries::exec(const int & _value)
   float millisecs;
   float microsecs;
 
-  int result;  
+  int result;
 
   ////////////////////////////////////
   // One Func Fibonacci
@@ -89,6 +127,7 @@ FibonnacciSeries::exec(const int & _value)
   cout << "/*******************************************" << endl;
   cout << "/** Por Ciclo While" << endl << endl;
 
+  cout << "Valor : " << _value << endl;
   cout << "Resultado : " << result << endl << endl;
   cout << "Serie Fibonacci por una sola función ha finalizado en: " << endl;
   cout << "time: " << secs << " seconds " << endl;
@@ -118,11 +157,23 @@ FibonnacciSeries::exec(const int & _value)
   cout << "/*******************************************" << endl;
   cout << "/** Por Recursividad" << endl << endl;
 
+  cout << "Valor : " << _value << endl;
   cout << "Resultado : " << result << endl << endl;
   cout << "Serie Fibonacci por funciones recursivas ha finalizado en: " << endl;
   cout << "time: " << secs << " seconds " << endl;
   cout << "time: " << millisecs << " milliseconds " << endl;
   cout << "time: " << microsecs << " microseconds " << endl << endl;
+}
+
+void
+FibonnacciSeries::exec(const std::vector<int> & _values)
+{
+  for (int value : _values)
+  {
+    exec(value);
+  }
+
+  return;
 }
 
 int

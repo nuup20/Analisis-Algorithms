@@ -1,5 +1,4 @@
 # Common Ignores
 
-# Unnecesary Folders
-/Debug/
-
+# Prerequisites
+/debug/

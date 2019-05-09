@@ -1,5 +1,7 @@
 #pragma once
 
+#include <vector>
+
 class FibonnacciSeries
 {
 public:
@@ -15,6 +17,9 @@ private:
 
   void
   exec(const int &);
+
+  void
+  exec(const std::vector<int> &);
 
   int 
   fibonnacciRecursive(const int &);
