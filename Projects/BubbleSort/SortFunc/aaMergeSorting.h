@@ -15,7 +15,4 @@ protected:
   virtual void
   algorithm_exec(vector<int> &);
 
-  void
-  merge_sort(vector<int> &);
-
 };
